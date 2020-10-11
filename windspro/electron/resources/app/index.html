@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="windspro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WinDS PRO</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="angular.min.js"></script>
+    <script src="angular-animate.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body ng-controller="EmulatorController as ec" ng-cloak>
+    <div id="background" class="background">
+        <div class="list-container scroll">
+            <div class="dropdown">
+                <button class="dropbtn">{{ec.translate('archivo')}}</button>
+                <div class="dropdown-content">
+                    <a href="#" ng-click="ec.openROMDialog()">📁 {{ec.translate('abrir')}}</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">{{ec.translate('opciones')}}</button>
+                <div class="dropdown-content">
+                    <a href="#" ng-click="ec.switchTheme()">🎨 {{ec.translate('cambiartema')}}</a>
+                    <a href="#" ng-click="ec.openDialog()">🖼️ {{ec.translate('cambiarimagen')}}</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">{{ec.translate('ayuda')}}</button>
+                <div class="dropdown-content">
+                    <a href="#" ng-click="ec.openWebsite()">🌎 {{ec.translate('sitioweb')}}</a>
+                </div>
+            </div>
+            <div class="list-item" ng-show="ec.hay_actualizaciones" ng-click="ec.actualizar()">
+                <p>
+                    <b>{{ec.res.actualizaciones}}</b>
+                </p>
+                <p>{{ec.nueva_version}}</p>
+                <p>{{ec.res.nueva}}</p>
+                <p style="text-align:right">
+                    <b>{{ec.res.actualizar}}</b>
+                </p>
+            </div>
+            <div class="list-item" ng-show="ec.fileName" ng-click="ec.closeFileName()">
+                <p>{{ec.fileName}}</p>
+            </div>
+            <div class="search">
+                <input id="search" type="text" placeholder="🔍 {{ec.res.buscar}}" ng-model="ec.searchText" autofocus>
+            </div>
+            <div class="list-item ripple" ng-repeat="emu in ec.emulators" ng-show="ec.isVisible($index)">
+                <p class="star" ng-show="emu.fav" ng-click="ec.unsetFav(emu)">★</p>
+                <p class="star" ng-show="!emu.fav" ng-click="ec.setFav(emu)">☆</p>
+                <a class="link" ng-click="ec.run($index)">
+                    <img src="./icons/{{emu.icon}}">
+                    <p>{{emu.name}}</p>
+                    <p class="category">{{emu.category}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="language.js"></script>
+    <script src="translations.js"></script>
+    <script src="emulators.js"></script>
+    <script src="windspro.js"></script>
+</body>
+
+</html>

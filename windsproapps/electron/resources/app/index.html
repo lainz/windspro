@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html ng-app="windspro">
+
+<head>
+  <meta charset="utf-8">
+  <title>WinDS PRO Apps</title>
+  <link rel="stylesheet" href="material.min.css">
+  <script src="material.min.js"></script>
+  <script src="angular.min.js"></script>
+  <link rel="stylesheet" href="dialog-polyfill.min.css">
+  <script src="dialog-polyfill.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body ng-controller="EmulatorController as ec">
+
+  <div class="layout-transparent mdl-layout mdl-js-layout">
+    <main class="mdl-layout__content">
+
+      <div class="mdl-shadow--2dp header">
+        <div class="mdl-card__supporting-text">
+          <form action="">
+            <div ng-show="ec.fileName != ''">
+              <span class="mdl-chip mdl-chip--deletable">
+              <span class="mdl-chip__text">{{ec.fileName}}</span>
+              <button type="button" class="mdl-chip__action" ng-click="ec.closeFileName()"><i class="material-icons">cancel</i></button>
+              </span>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-class="{'is-focused is-dirty': ec.searchFocusedDirty()}">
+              <input class="mdl-textfield__input" type="text" name="input" id="search" ng-model="ec.searchText">
+              <label class="mdl-textfield__label" for="search">Search...</label>
+            </div>
+            <div>
+              <button type="button" class="mdl-chip" ng-click="ec.search(cat.search)" ng-repeat="cat in ec.categories">
+              <span class="mdl-chip__text" >{{cat.name}}</span>
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Emulator</th>
+            <th>Version</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-click="ec.run($index)" ng-repeat="emu in ec.emulators" ng-show="ec.isVisible($index)">
+            <td class="mdl-data-table__cell--non-numeric"><img src=".\icons\{{emu.icon}}" width="32px" /> {{emu.name}}</td>
+            <td>{{emu.version}}</td>
+            <td>{{emu.category}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </main>
+  </div>
+
+  <dialog id="dialog" class="mdl-dialog">
+    <h3 class="mdl-dialog__title">Updates</h3>
+    <div class="mdl-dialog__content">
+      <p>New version of WinDS PRO Apps available to download!</p>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button">OK</button>
+    </div>
+  </dialog>
+
+  <script src="emulators.js"></script>
+  <script src="windspro.js"></script>
+</body>
+
+</html>

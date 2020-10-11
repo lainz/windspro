@@ -1,0 +1,44 @@
+object frmconfig: Tfrmconfig
+  Left = 86
+  Height = 480
+  Top = 142
+  Width = 640
+  Caption = 'Configuration'
+  ClientHeight = 480
+  ClientWidth = 640
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poOwnerFormCenter
+  LCLVersion = '1.4.2.0'
+  object ColorsListBox: TListBox
+    Left = 0
+    Height = 441
+    Top = 39
+    Width = 640
+    Align = alClient
+    BorderStyle = bsNone
+    ExtendedSelect = False
+    ItemHeight = 48
+    OnDrawItem = ColorsListBoxDrawItem
+    OnSelectionChange = ColorsListBoxSelectionChange
+    Style = lbOwnerDrawVariable
+    TabOrder = 0
+  end
+  object DarkSkinComboBox: TComboBox
+    Left = 8
+    Height = 23
+    Top = 8
+    Width = 624
+    Align = alTop
+    BorderSpacing.Around = 8
+    ItemHeight = 15
+    Items.Strings = (
+      'Light Skin'
+      'Dark Skin'
+      'Apps Skin'
+    )
+    OnSelect = DarkSkinComboBoxSelect
+    Style = csDropDownList
+    TabOrder = 1
+  end
+end

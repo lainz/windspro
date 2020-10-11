@@ -1,0 +1,18 @@
+{
+  "name": "windspro",
+  "version": "1.0.0",
+  "description": "WinDS PRO",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "",
+  "keywords": [
+    "WinDS PRO"
+  ],
+  "author": "WinDS PRO Central",
+  "license": "",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
