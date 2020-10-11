@@ -13,6 +13,6 @@
   "author": "WinDS PRO Central",
   "license": "",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^10.1.3"
   }
 }
