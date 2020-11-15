@@ -60,7 +60,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 800, height: 600, show: false, backgroundColor: '#fff', webPreferences: {
             nodeIntegration: true,
-            devTools: false
+            devTools: true
         }
     });
     mainWindow.once('ready-to-show', () => {

@@ -1,5 +1,5 @@
 const exeName = 'windspro.exe';
-const version = '2020.06.03';
+const version = '2020.11.15';
 const updatesURL = 'http://lainz.github.io/windspro/version/windspro.json';
 const emuFolder = 'emu\\\\';
 
@@ -150,7 +150,7 @@ var emulators = [
         category: 'Nintendo 3DS (3DS)',
         version: '2020.02.09',
         executable: 'citra-qt.exe',
-        folder: 'citranightly',
+        folder: 'Citra//nightly-mingw',
         icon: 'citraedge.png',
         extensions: '(3ds)(3dsx)(cci)(cxi)(csu)'
     },
@@ -168,7 +168,7 @@ var emulators = [
         category: 'Nintendo 3DS (3DS)',
         version: '2020.02.09',
         executable: 'citra-qt.exe',
-        folder: 'citracanary',
+        folder: 'Citra//canary-mingw',
         icon: 'citraedge.png',
         extensions: '(3ds)(3dsx)(cci)(cxi)(csu)'
     },
@@ -200,7 +200,7 @@ var emulators = [
         extensions: ''
     },
     {
-        name: 'No$gba',
+        name: 'No$gba 2.6a',
         category: 'Nintendo DS (NDS), Game Boy Advance (GBA)',
         version: '2.6a',
         executable: 'no$gba.exe',
@@ -271,7 +271,7 @@ var emulators = [
         icon: 'vbam.png',
         extensions: '(gb)(gmb)(sgb)(cgb)(gbc)(agb)(bin)(elf)(gba)(mb)'
     },
-	{
+    {
         name: 'Atari800Win PLus',
         category: 'Atari 5200',
         version: '4.1',
@@ -306,8 +306,8 @@ var emulators = [
         folder: 'CCS64_39',
         icon: 'ccs64.png',
         extensions: systems.Commodore64 + systems.Commodore64PP + systems.Commodore64Tapes,
-        parameters: function(file) {
-            return [file,'-fastload','-autorun']
+        parameters: function (file) {
+            return [file, '-fastload', '-autorun']
         }
     },
     {
@@ -328,15 +328,15 @@ var emulators = [
         icon: 'cxbx.png',
         extensions: ''
     },
-	{
-		 name: 'Decaf',
+    {
+        name: 'Decaf',
         category: 'Nintendo Wii U (Wii U)',
         version: '2019.09.28',
         executable: 'decaf-qt.exe',
         folder: 'decaf',
         icon: 'decaf.png',
         extensions: ''
-	},
+    },
     {
         name: 'Demul',
         category: 'Sega Dreamcast (DC)',
@@ -372,7 +372,7 @@ var emulators = [
         folder: 'IshiirukaDolphin',
         icon: 'dolphinishiiruka.png',
         extensions: systems.NintendoGameCube + systems.NintendoWii,
-        parameters: function(file) {
+        parameters: function (file) {
             return ['/e', file]
         }
     },
@@ -393,7 +393,7 @@ var emulators = [
         folder: 'Dolphin_402_32-bit',
         icon: 'dolphin.png',
         extensions: systems.NintendoGameCube + systems.NintendoWii,
-        parameters: function(file) {
+        parameters: function (file) {
             return ['/e', file]
         }
     },
@@ -745,7 +745,7 @@ var emulators = [
         version: '0.0.8-9326',
         executable: 'rpcs3.exe',
         folder: 'rpcs3',
-        icon: 'default.png',
+        icon: 'rpcs3.png',
         extensions: systems.SonyPlayStation3
     },
     {
@@ -892,12 +892,21 @@ var emulators = [
         icon: 'xenia.png',
         extensions: ''
     },
-	{
+    {
         name: 'Yuzu Canary',
         category: 'Nintendo switch',
         version: '2020.01.04',
         executable: 'yuzu.exe',
-        folder: 'yuzu_canary',
+        folder: 'yuzu//yuzu-windows-msvc',
+        icon: 'yuzu.png',
+        extensions: ''
+    },
+    {
+        name: 'Yuzu (Updater)',
+        category: 'Nintendo switch',
+        version: '2020.01.04',
+        executable: 'maintenancetool.exe',
+        folder: 'yuzu',
         icon: 'yuzu.png',
         extensions: ''
     },
@@ -912,7 +921,14 @@ var emulators = [
     }
 ];
 
+const fs = require('electron').remote.require('fs')
+
 emulators.forEach((emu) => {
+    if (fs.existsSync(`./emu/${emu.folder}/${emu.executable}`)) {
+        emu.exists = true
+    } else {
+        emu.exists = false
+    }
     if (localStorage.getItem('emu_' + emu.name) == 'T') {
         emu.fav = true;
     } else {

@@ -160,7 +160,7 @@
             } else {
                 hasExt = this.emulators[index].extensions.indexOf(this.fileExt.toLowerCase()) != -1;
             }
-            return (hasText && hasExt);
+            return (hasText && hasExt && this.emulators[index].exists);
         };
         this.emulators = emulators;
         this.categories = categories;
@@ -205,9 +205,11 @@
             }
         });
 
-        this.setTheme = function (theme) {
+        this.setTheme = function (theme, firstTime) {
+            if (!firstTime)
             document.documentElement.classList.add('color-theme-in-transition')
             document.documentElement.setAttribute('data-theme', theme)
+            if (!firstTime)
             window.setTimeout(function () {
                 document.documentElement.classList.remove('color-theme-in-transition')
             }, 1000)
@@ -216,17 +218,17 @@
         this.switchTheme = function () {
             var theme = localStorage.getItem('theme');
             if (theme == 'dark') {
-                this.setTheme('');
+                this.setTheme('', false);
                 localStorage.setItem('theme', '');
             } else {
-                this.setTheme('dark');
+                this.setTheme('dark', false);
                 localStorage.setItem('theme', 'dark');
             }
         }
 
-        this.loadTheme = function () {
+        this.loadTheme = function (firstTime) {
             var theme = localStorage.getItem('theme');
-            this.setTheme(theme);
+            this.setTheme(theme, firstTime);
         }
 
         this.openWebsite = function () {
@@ -277,7 +279,7 @@
         }
 
         this.sortEmu();
-        this.loadTheme();
+        this.loadTheme(true);
     }]);
 
 })();
