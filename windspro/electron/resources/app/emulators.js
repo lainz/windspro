@@ -922,9 +922,12 @@ var emulators = [
 ];
 
 const fs = require('electron').remote.require('fs')
+var remote = require('electron').remote;
+argv = remote.getGlobal('sharedObject').argv;
+path = argv[0].substring(0, argv[0].length - exeName.length);
 
 emulators.forEach((emu) => {
-    if (fs.existsSync(`./emu/${emu.folder}/${emu.executable}`)) {
+    if (fs.existsSync(`${path}emu/${emu.folder}/${emu.executable}`)) {
         emu.exists = true
     } else {
         emu.exists = false
