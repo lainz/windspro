@@ -3,7 +3,7 @@ LinuxDS PRO
 -----------
 
 Descripción: Pack de emuladores para Ubuntu.
-Versión: 2019.10.30 Ubuntu 19.10.
+Versión: 2020.11.21 Ubuntu 20.04.
 
 --------------
 Instalación
@@ -26,6 +26,10 @@ Ingresa tu password de superusuario y comenzará la desinstalación.
 ----------------------
 Historial de versiones
 ----------------------
+2020.11.21
+- Sacados emuladores que no estan en Ubuntu 20.04
+- Actualizada interfaz de LinuxDS PRO
+
 2019.10.30
 - Sacados emuladores que no estan en Ubuntu 19.10
 

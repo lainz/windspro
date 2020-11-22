@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo apt-get remove -y -f dosbox fs-uae fs-uae-arcade fs-uae-launcher hatari higan mednafen nestopia pcsxr stella virtualjaguar visualboyadvance yabause yabause-common yabause-qt fceux desmume mupen64plus-qt dolphin-emu vbaexpress zsnes-dbg:i386 pcsx2:i386 mgba-qt
+sudo apt-get remove -y -f dosbox fs-uae fs-uae-arcade fs-uae-launcher hatari higan mednafen nestopia pcsxr stella virtualjaguar visualboyadvance yabause yabause-common yabause-qt fceux desmume mupen64plus-qt dolphin-emu vbaexpress mgba-qt
 sudo apt autoremove -y -f
 sudo rm -r /usr/games/linuxdspro/
 sudo rm /usr/bin/linuxdspro
