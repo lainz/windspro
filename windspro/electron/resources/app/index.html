@@ -16,22 +16,22 @@
     <div id="background" class="background">
         <div class="list-container scroll">
             <div class="dropdown">
-                <button class="dropbtn">{{ec.translate('archivo')}}</button>
+                <button class="dropbtn">{{ec.translate('archivo').toUpperCase()}}</button>
                 <div class="dropdown-content">
-                    <a href="#" ng-click="ec.openROMDialog()">📁 {{ec.translate('abrir')}}</a>
+                    <a href="#" ng-click="ec.openROMDialog()">📁 {{ec.translate('abrir').toUpperCase()}}</a>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">{{ec.translate('opciones')}}</button>
+                <button class="dropbtn">{{ec.translate('opciones').toUpperCase()}}</button>
                 <div class="dropdown-content">
-                    <a href="#" ng-click="ec.switchTheme()">🎨 {{ec.translate('cambiartema')}}</a>
-                    <a href="#" ng-click="ec.openDialog()">🖼️ {{ec.translate('cambiarimagen')}}</a>
+                    <a href="#" ng-click="ec.switchTheme()">🎨 {{ec.translate('cambiartema').toUpperCase()}}</a>
+                    <a href="#" ng-click="ec.openDialog()">🖼️ {{ec.translate('cambiarimagen').toUpperCase()}}</a>
                 </div>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">{{ec.translate('ayuda')}}</button>
+                <button class="dropbtn">{{ec.translate('ayuda').toUpperCase()}}</button>
                 <div class="dropdown-content">
-                    <a href="#" ng-click="ec.openWebsite()">🌎 {{ec.translate('sitioweb')}}</a>
+                    <a href="#" ng-click="ec.openWebsite()">🌎 {{ec.translate('sitioweb').toUpperCase()}}</a>
                 </div>
             </div>
             <div class="list-item" ng-show="ec.hay_actualizaciones" ng-click="ec.actualizar()">
@@ -48,15 +48,15 @@
                 <p>{{ec.fileName}}</p>
             </div>
             <div class="search">
-                <input id="search" type="text" placeholder="🔍 {{ec.res.buscar}}" ng-model="ec.searchText" autofocus>
+                <input id="search" type="text" placeholder="🔍 {{ec.res.buscar.toUpperCase()}}" ng-model="ec.searchText" autofocus>
             </div>
             <div class="list-item ripple" ng-repeat="emu in ec.emulators" ng-show="ec.isVisible($index)">
                 <p class="star" ng-show="emu.fav" ng-click="ec.unsetFav(emu)">★</p>
                 <p class="star" ng-show="!emu.fav" ng-click="ec.setFav(emu)">☆</p>
                 <a class="link" ng-click="ec.run($index)">
                     <img src="./icons/{{emu.icon}}">
-                    <p>{{emu.name}}</p>
-                    <p class="category">{{emu.category}}</p>
+                    <p style="font-size: large;">{{emu.name.toUpperCase()}}</p>
+                    <p class="category" style="font-size: smaller;">{{emu.category.toUpperCase()}}</p>
                 </a>
             </div>
         </div>

@@ -1,5 +1,5 @@
 const exeName = 'windspro.exe';
-const version = '2020.11.15';
+const version = '2021.04.18';
 const updatesURL = 'http://lainz.github.io/windspro/version/windspro.json';
 const emuFolder = 'emu\\\\';
 
@@ -527,7 +527,7 @@ var emulators = [
         name: 'Mupen64Plus',
         category: 'Nintendo 64 (N64)',
         version: '2.5',
-        executable: 'mupen64plus-qt.exe',
+        executable: 'mupen64plus-gui.exe',
         folder: 'Mupen64Plus_20',
         icon: 'mupen64plus.png',
         extensions: systems.Nintendo64
