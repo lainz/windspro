@@ -47,19 +47,23 @@
             <div class="list-item" ng-show="ec.fileName" ng-click="ec.closeFileName()">
                 <p>{{ec.fileName}}</p>
             </div>
-            <div class="search">
-                <input id="search" type="text" placeholder="🔍 {{ec.res.buscar.toUpperCase()}}" ng-model="ec.searchText" autofocus>
-            </div>
-            <div class="list-item ripple" ng-repeat="emu in ec.emulators" ng-show="ec.isVisible($index)">
-                <p class="star" ng-show="emu.fav" ng-click="ec.unsetFav(emu)">★</p>
-                <p class="star" ng-show="!emu.fav" ng-click="ec.setFav(emu)">☆</p>
-                <a class="link" ng-click="ec.run($index)">
-                    <img src="./icons/{{emu.icon}}">
-                    <p style="font-size: large;">{{emu.name.toUpperCase()}}</p>
-                    <p class="category" style="font-size: smaller;">{{emu.category.toUpperCase()}}</p>
-                </a>
+            <div id="main">
+                <input id="search" type="text" placeholder="🔍 {{ec.res.buscar.toUpperCase()}}" autocomplete="none" spellcheck="false"
+                    autocapitalize="off" ng-model="ec.searchText" autofocus>
+                <div id="emucontainer" class="scroll">
+                    <div class="emu" ng-repeat="emu in ec.emulators" ng-show="ec.isVisible($index)"
+                        ng-click="ec.run($index)">
+                        <!--p class="star" ng-show="emu.fav" ng-click="ec.unsetFav(emu)">★</p>
+                        <p class="star" ng-show="!emu.fav" ng-click="ec.setFav(emu)">☆</p-->
+                        <div>
+                            <img class="emuimage" src="./icons/{{emu.icon}}">
+                        </div>
+                        <div class="emuname">{{emu.name.toUpperCase()}}</div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
     <script src="language.js"></script>
     <script src="translations.js"></script>

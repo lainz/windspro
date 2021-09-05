@@ -1,5 +1,5 @@
 const exeName = 'windspro.exe';
-const version = '2021.04.18';
+const version = '2021.09.05';
 const updatesURL = 'http://lainz.github.io/windspro/version/windspro.json';
 const emuFolder = 'emu\\\\';
 

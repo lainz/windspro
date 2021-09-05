@@ -250,10 +250,10 @@
 
         this.sortEmu = function () {
             this.emulators.sort((a, b) => {
-                if (a.fav && !b.fav)
+                /*if (a.fav && !b.fav)
                     return -1
                 if (!a.fav && b.fav)
-                    return 1
+                    return 1*/
                 if (a.name.toLowerCase() > b.name.toLowerCase())
                     return 1
                 if (a.name.toLowerCase() < b.name.toLowerCase())
